@@ -7,15 +7,15 @@ import java.util.prefs.Preferences;
 
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
 
-public class sqlDataCustom {
-	String returnData = "<p><a href=\"/home\">Return to home</a></p>";
+public class sqlDataGetBookByRating {
+	String returnData = "<p><a href=\"/home\">Return to home</a></p><h1>Books Sorted By Highest Rating</h1>";
 	private String query;
 	private Statement stm;
 	private String username;
 	private String password;
 	private String host;
 
-	public sqlDataCustom(String query) {
+	public sqlDataGetBookByRating(String query) {
         Preferences ps = Preferences.userNodeForPackage(PreferencesExample.class);
         // Load  file object
         System.getProperty("user.dir");

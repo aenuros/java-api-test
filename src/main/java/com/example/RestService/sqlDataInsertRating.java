@@ -7,7 +7,7 @@ import java.util.prefs.Preferences;
 
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
 
-public class sqlDataCustom {
+public class sqlDataInsertRating {
 	String returnData = "<p><a href=\"/home\">Return to home</a></p>";
 	private String query;
 	private Statement stm;
@@ -15,7 +15,7 @@ public class sqlDataCustom {
 	private String password;
 	private String host;
 
-	public sqlDataCustom(String query) {
+	public sqlDataInsertRating(String query) {
         Preferences ps = Preferences.userNodeForPackage(PreferencesExample.class);
         // Load  file object
         System.getProperty("user.dir");
@@ -49,44 +49,13 @@ public class sqlDataCustom {
 			System.out.println("Connected with the Database Successfully");
 			this.query = query;
 			this.stm = ((java.sql.Connection) connection).createStatement();
-			ResultSet rs = stm.executeQuery(this.query);
+			int rs = stm.executeUpdate(this.query);
 			
 			//display results
 			
-			while(rs.next()) {
-				
-				int stars = rs.getInt("stars");
-				
-				String starRating;
-				
-				if (stars == 0) {
-					starRating = "No Rating Applied";
-				} else {
-					starRating = String.valueOf(stars);
-				}
-				
-				String comment = rs.getString("comment");
-				
-				String commentFull;
-				if (comment == null || comment.isEmpty()) {
-					commentFull = "User did not leave a comment.";
-				} else {
-					commentFull = comment;
-				}
-				
-				String name = rs.getString("Name");
-				String username = rs.getString("username");
-				Date datetime = rs.getDate("datetime");
-				
 				returnData = returnData + "<br>" + String.format(
-						"Name: %s<br>"
-						+ " Star rating: %s<br>"
-						+ " comment: %s<br>"
-						+ " Rated by: %s<br>"
-						+ " Published on: %s<br>",
-						name, starRating, commentFull, username, datetime
+						"<p>Success!</p> <p><a href=\"/books/rating\">Books by rating - highest first</a></p>"
 						);
-			}
 			
 		} 
 		
@@ -97,3 +66,4 @@ public class sqlDataCustom {
 		}
 	}
 }
+

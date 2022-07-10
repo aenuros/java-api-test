@@ -7,7 +7,7 @@ import java.util.prefs.Preferences;
 
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
 
-public class sqlDataCustom {
+public class sqlDataGetBookByAverageRating {
 	String returnData = "<p><a href=\"/home\">Return to home</a></p>";
 	private String query;
 	private Statement stm;
@@ -15,7 +15,10 @@ public class sqlDataCustom {
 	private String password;
 	private String host;
 
-	public sqlDataCustom(String query) {
+	public sqlDataGetBookByAverageRating(String query) {
+		ArrayList<Integer> starList = new ArrayList<Integer>();
+		String name = "";
+		
         Preferences ps = Preferences.userNodeForPackage(PreferencesExample.class);
         // Load  file object
         System.getProperty("user.dir");
@@ -54,37 +57,32 @@ public class sqlDataCustom {
 			//display results
 			
 			while(rs.next()) {
-				
 				int stars = rs.getInt("stars");
 				
-				String starRating;
+				if (stars != 0) {
+					starList.add(stars);
+				}
+								
+				name = rs.getString("Name");
 				
-				if (stars == 0) {
-					starRating = "No Rating Applied";
-				} else {
-					starRating = String.valueOf(stars);
+				
+			}
+			if (rs.next() == false) {
+				float sum = 0;
+				for (int i = 0; i < starList.size(); i++) {
+					sum += starList.get(i);
 				}
 				
-				String comment = rs.getString("comment");
+				float average = sum / starList.size();
 				
-				String commentFull;
-				if (comment == null || comment.isEmpty()) {
-					commentFull = "User did not leave a comment.";
-				} else {
-					commentFull = comment;
+				if (name == "") {
+					name = "No Title";
 				}
-				
-				String name = rs.getString("Name");
-				String username = rs.getString("username");
-				Date datetime = rs.getDate("datetime");
 				
 				returnData = returnData + "<br>" + String.format(
 						"Name: %s<br>"
-						+ " Star rating: %s<br>"
-						+ " comment: %s<br>"
-						+ " Rated by: %s<br>"
-						+ " Published on: %s<br>",
-						name, starRating, commentFull, username, datetime
+						+ " Average Star rating: %s<br>",
+						name, average
 						);
 			}
 			

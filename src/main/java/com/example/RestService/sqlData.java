@@ -1,5 +1,6 @@
 package com.example.RestService;
 import java.sql.*;
+import java.sql.Date;
 import java.io.*;
 import java.util.*;
 import java.util.prefs.Preferences;
@@ -7,7 +8,7 @@ import java.util.prefs.Preferences;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
 
 public class sqlData {
-	String returnData = "";
+	String returnData = "<p><a href=\"/home\">Return to home</a></p>";
 	private String query;
 	private Statement stm;
 	private String username;
@@ -54,9 +55,9 @@ public class sqlData {
 			
 			while(rs.next()) {
 				
-				int isbn = rs.getInt("ISBN");
+				String isbn = rs.getString("ISBN");
 				String name = rs.getString("Name");
-				String desc = rs.getString("Desc");
+				String desc = rs.getString("Description");
 				double price = rs.getDouble("Price");
 				String author = rs.getString("Author");
 				String genre = rs.getString("Genre");
@@ -84,4 +85,6 @@ public class sqlData {
 			e.printStackTrace();
 		}
 	}
+
+
 }
