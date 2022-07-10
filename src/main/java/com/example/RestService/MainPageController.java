@@ -7,12 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainPageController {
-	
-	
 	@GetMapping("")
 	public ModelAndView viewHomePage() {
-		ModelAndView view = new ModelAndView("/RestService/src/main/resources/templates/index.html");
+		ModelAndView view = new ModelAndView("/demo/src/main/resources/templates/index.html");
 		return view;
 	}
-	
 }
