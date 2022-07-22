@@ -17,8 +17,8 @@ public class sqlBookData {
 	public sqlBookData(String query) {
 		
 		host = "jdbc:mysql://l3xksr51tlfz.us-east-2.psdb.cloud/bookshop";
-		username = "h06vfuduzsef";
-		password = "pscale_pw_kNtFlYOokD-ng-oCHCl_VIygxoaSQEywUUZVg7wuUjM";
+		username = "zlsbmvt5ijy8";
+		password = "pscale_pw_GVOS4sX5oVqTZLdIAdcMQ7RCz5MHIdXRwhoL24CC2T8";
 		try {
 			java.sql.Connection connection = DriverManager.getConnection(
 					  host,
