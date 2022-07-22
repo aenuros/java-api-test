@@ -1,4 +1,5 @@
 package bookshop;
+
 import java.sql.*;
 import java.io.*;
 import java.util.*;
@@ -6,7 +7,7 @@ import java.util.prefs.Preferences;
 
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties.Cache.Connection;
 
-public class sqlBookData {
+public class BookRetrievalFeature {
 	public String returnData = "";
 	private String query;
 	private Statement stm;
@@ -14,11 +15,11 @@ public class sqlBookData {
 	private String password;
 	private String host;
 	
-	public sqlBookData(String query) {
+	public BookRetrievalFeature(String query) {
 		
 		host = "jdbc:mysql://l3xksr51tlfz.us-east-2.psdb.cloud/bookshop";
-		username = "h06vfuduzsef";
-		password = "pscale_pw_kNtFlYOokD-ng-oCHCl_VIygxoaSQEywUUZVg7wuUjM";
+		username = "zlsbmvt5ijy8";
+		password = "pscale_pw_GVOS4sX5oVqTZLdIAdcMQ7RCz5MHIdXRwhoL24CC2T8";
 		try {
 			java.sql.Connection connection = DriverManager.getConnection(
 					  host,
@@ -30,7 +31,6 @@ public class sqlBookData {
 			ResultSet rs = stm.executeQuery(this.query);
 			
 			//display results
-			
 			while(rs.next()) {
 				
 				long isbn = rs.getLong("ISBN");
@@ -47,15 +47,13 @@ public class sqlBookData {
 						+ " Name: %s<br>"
 						+ " Description: %s<br>"
 						+ " Price: %s<br>"
-						+ " Autho: %s<br>"
+						+ " Author: %s<br>"
 						+ " Genre: %s<br>"
 						+ " Publisher: %s<br>"
 						+ "Year Published: %s<br>"
 						+ " Copies Sold: %s<br>",
-						isbn, name, desc, price, author, genre, publisher, year_published, copies_sold
-						);
+						isbn, name, desc, price, author, genre, publisher, year_published, copies_sold);
 			}
-			
 		} 
 		
 		catch (SQLException e) {
