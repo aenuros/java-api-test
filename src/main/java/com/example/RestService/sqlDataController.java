@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class sqlDataController {
 	
 	private final AtomicLong counter = new AtomicLong();
-	
-	@GetMapping("/books")
-	public String allBooks(@RequestParam(value = "query", defaultValue = "SELECT * FROM book") String query) {
-		return new sqlData(query).returnData;
-	}
-	
+//	
+//	@GetMapping("/books")
+//	public String allBooks(@RequestParam(value = "query", defaultValue = "SELECT * FROM book") String query) {
+//		return new sqlData(query).returnData;
+//	}
+//	
 	@GetMapping("/books/bygenre")
 	public String booksByGenre(@RequestParam(value = "genre") String genre){
 		return new sqlData("SELECT * FROM book WHERE genre = \"" + genre + "\"").returnData;
