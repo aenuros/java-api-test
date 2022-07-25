@@ -20,7 +20,10 @@ public class User {
     private String email;
     private String password;
     private String name;
-    private String address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "aid")
+    private Address address;
 
     @OneToMany(cascade =  CascadeType.ALL)
     @JoinColumn(name = "cc_id", referencedColumnName = "id")
