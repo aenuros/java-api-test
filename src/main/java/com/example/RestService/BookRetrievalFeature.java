@@ -1,4 +1,4 @@
-package bookshop;
+package com.example.RestService;
 
 import java.sql.*;
 import java.io.*;

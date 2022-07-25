@@ -1,20 +1,30 @@
+package com.example.RestService;
 //package bookshop;
 //
+//import java.util.Date;
 //import java.util.Objects;
 //import javax.persistence.Entity;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
 //
 //@Entity
-//class User {
+//class Comment {
 //
 //  private @Id @GeneratedValue Long id;
 //  private String name;
+//  private User user;
+//  private Book book;
+//  private String review;
+//  private Date date;
 //
-//  User() {}
+//  Comment() {}
 //
-//  User(String name) {
+//  Comment(String name, User user, Book book, String review) {
 //    this.name = name;
+//    this.user = user;
+//    this.book = book;
+//    this.review = review;
+//    this.date = new Date();
 //  }
 //
 //  public Long getId() {
@@ -34,16 +44,16 @@
 //  }
 //
 //
-////  @Override
-////  public boolean equals(Object o) {
-////
-////    if (this == o)
-////      return true;
-////    if (!(o instanceof Book))
-////      return false;
-////    Book book = (Book) o;
-////    return Objects.equals(this.id, book.id) && Objects.equals(this.name, book.name);
-////  }
+//  @Override
+//  public boolean equals(Object o) {
+//
+//    if (this == o)
+//      return true;
+//    if (!(o instanceof Comment))
+//      return false;
+//    Comment book = (Comment) o;
+//    return Objects.equals(this.id, book.id) && Objects.equals(this.name, book.name);
+//  }
 //
 //  @Override
 //  public int hashCode() {
@@ -52,6 +62,6 @@
 //
 //  @Override
 //  public String toString() {
-//    return "User{" + "id=" + this.id + ", name='" + this.name;
+//    return "Book{" + "id=" + this.id + ", name='" + this.name;
 //  }
 //}

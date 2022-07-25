@@ -1,3 +1,4 @@
+package com.example.RestService;
 //package bookshop;
 //
 //import java.util.Date;
@@ -7,22 +8,22 @@
 //import javax.persistence.Id;
 //
 //@Entity
-//class Comment {
+//class Rating {
 //
 //  private @Id @GeneratedValue Long id;
 //  private String name;
 //  private User user;
 //  private Book book;
-//  private String review;
+//  private Integer rating;
 //  private Date date;
 //
-//  Comment() {}
+//  Rating() {}
 //
-//  Comment(String name, User user, Book book, String review) {
+//  Rating(String name, User user, Book book, Integer rating) {
 //    this.name = name;
 //    this.user = user;
 //    this.book = book;
-//    this.review = review;
+//    this.rating = rating;
 //    this.date = new Date();
 //  }
 //
@@ -48,9 +49,9 @@
 //
 //    if (this == o)
 //      return true;
-//    if (!(o instanceof Comment))
+//    if (!(o instanceof Rating))
 //      return false;
-//    Comment book = (Comment) o;
+//    Rating book = (Rating) o;
 //    return Objects.equals(this.id, book.id) && Objects.equals(this.name, book.name);
 //  }
 //
