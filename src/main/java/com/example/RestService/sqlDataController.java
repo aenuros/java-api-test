@@ -19,16 +19,16 @@ public class sqlDataController {
 //		return new sqlData(query).returnData;
 //	}
 //	
-	@GetMapping("/books/bygenre")
-	public String booksByGenre(@RequestParam(value = "genre") String genre){
-		return new sqlData("SELECT * FROM book WHERE genre = \"" + genre + "\"").returnData;
-	}
-	
-	
-	@GetMapping("/books/bymostsold")
-	public String booksByGenre(){
-		return new sqlData("SELECT * FROM book ORDER BY copies_sold LIMIT 10").returnData;
-	}
+//	@GetMapping("/books/bygenre")
+//	public String booksByGenre(@RequestParam(value = "genre") String genre){
+//		return new sqlData("SELECT * FROM book WHERE genre = \"" + genre + "\"").returnData;
+//	}
+//	
+//	
+//	@GetMapping("/books/bymostsold")
+//	public String booksByGenre(){
+//		return new sqlData("SELECT * FROM book ORDER BY copies_sold LIMIT 10").returnData;
+//	}
 	
 	// Must be able to retrieve a list of ratings and comments, sorted by highest rating
 	@GetMapping("/books/rating")
@@ -59,30 +59,28 @@ public class sqlDataController {
 				+ "WHERE bookshop.rating.book_id = " + id + "\n"
 				+ "ORDER BY bookshop.rating.stars DESC;").returnData;
 	}
-
-//	@RequestMapping(value = "/books/newrating")
-//	  public String newRating() {
-//		  return new sqlDataInsertRating("INSERT INTO bookshop.rating (stars, book_id, user_id, comment) \n"
-//		  		+ "VALUES ('1', '10', '4', 'I am not a fan');").returnData;
-//	  }
-	
-	
-//	@RequestMapping(value = "/books/newrating")
-//	  public String newRating(@RequestParam(value = "query", defaultValue = "SELECT * FROM book") String query) {
-//		  return new sqlDataInsertRating("INSERT INTO bookshop.rating (stars, book_id, user_id, comment) \n"
-//		  		+ "VALUES ('1', '10', '4', 'I am not a fan');").returnData;
-//	  }
 	
 	@RequestMapping("/books/newrating")
 	public String newRating(@RequestParam(value = "stars") int stars,
 			@RequestParam(value="book_id") int book_id,
+			@RequestParam(value="user_id") int user_id
+			){
+//		return new sqlData("SELECT * FROM book WHERE genre = \"" + genre + "\"").returnData;
+		return new sqlDataInsertRating("INSERT INTO bookshop.rating (stars, book_id, user_id, comment) \n"
+		  		+ "VALUES ('" + stars + "', '" + book_id + "', '" + user_id + "', '" + "" + "');").returnData;
+	}
+	
+	
+	@RequestMapping("/books/newcomment")
+	public String newComment(@RequestParam(value="book_id") int book_id,
 			@RequestParam(value="user_id") int user_id,
 			@RequestParam(value="comment") String comment
 			){
 //		return new sqlData("SELECT * FROM book WHERE genre = \"" + genre + "\"").returnData;
 		return new sqlDataInsertRating("INSERT INTO bookshop.rating (stars, book_id, user_id, comment) \n"
-		  		+ "VALUES ('" + 1 + "', '" + 10 + "', '" + 4 + "', '" + comment + "');").returnData;
+		  		+ "VALUES ('" + 0 + "', '" + book_id + "', '" + user_id + "', '" + comment + "');").returnData;
 	}
+	
 	
 	
 
