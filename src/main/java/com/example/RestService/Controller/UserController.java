@@ -1,5 +1,6 @@
 package com.example.RestService.Controller;
 
+import com.example.RestService.Models.Card;
 import com.example.RestService.Models.User;
 import com.example.RestService.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +26,40 @@ public class UserController {
         return userRepo.findAll();
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value = "/user/{id}")
     User one(@PathVariable Long id) {
         return userRepo.findById(id).get();
     }
 
-    @PutMapping(value = "update/{id}")
-    public String updateUser(@PathVariable long id, @RequestBody User user){
+
+//    @PutMapping(value = "update/{id}")
+//    public String updateUser(@PathVariable long id, @RequestBody User user){
+//        User updatedUser = userRepo.findById(id).get();
+//        updatedUser.setEmail(user.getEmail());
+//        updatedUser.setPassword(user.getPassword());
+//        updatedUser.setName(user.getName());
+//        updatedUser.setAddress(user.getAddress());
+//        updatedUser.setCards(user.getCards());
+//        userRepo.save(updatedUser);
+//        return "Updated...";
+//    }
+
+
+    @PutMapping(value = "/update/account/{id}")
+    public String updateAcc(@PathVariable long id, @RequestBody User user){
         User updatedUser = userRepo.findById(id).get();
-        updatedUser.setEmail(user.getEmail());
         updatedUser.setPassword(user.getPassword());
-        updatedUser.setName(user.getPassword());
-        updatedUser.setAddress(user.getAddress());
+        updatedUser.setName(user.getName());
+        userRepo.save(updatedUser);
+        return "Account updated...";
+    }
+
+    @PutMapping(value = "user/addCard/{id}")
+    public String addCard(@PathVariable long id, @RequestBody User user){
+        User updatedUser = userRepo.findById(id).get();
         updatedUser.setCards(user.getCards());
         userRepo.save(updatedUser);
-        return "Updated...";
+        return "Card Appended...";
     }
 
     @DeleteMapping(value = "/delete/{id}")

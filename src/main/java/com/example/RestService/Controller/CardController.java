@@ -26,7 +26,7 @@ public class CardController {
     }
 
     @PutMapping(value = "update/card/{id}")
-    public String updateUser(@PathVariable long id, @RequestBody Card card){
+    public String updateCard(@PathVariable long id, @RequestBody Card card){
         Card updatedCard = cardRepo.findById(id).get();
         updatedCard.setNumber(card.getNumber());
         updatedCard.setCvv(card.getCvv());
