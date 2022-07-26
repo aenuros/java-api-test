@@ -18,8 +18,8 @@ public class BookRetrievalFeature {
 	public BookRetrievalFeature(String query) {
 		
 		host = "jdbc:mysql://l3xksr51tlfz.us-east-2.psdb.cloud/bookshop";
-		username = "eupv4jsr0rht";
-		password = "pscale_pw_IDAuOB64mOyAitOWhQ6uJnxCE2fy0GyoVVkhfDu43r4";
+		username = "8fp719dqvuym";
+		password = "pscale_pw_ZwC2j7JNZdAf7YBlOnesCEB3ErplyJrMaRJyzgZRF9U";
 		try {
 			java.sql.Connection connection = DriverManager.getConnection(
 					  host,
