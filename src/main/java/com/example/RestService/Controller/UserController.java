@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserRepo userRepo;
 
-    @PostMapping("/save")
+    @PostMapping("/signup")
     public ResponseEntity<String> saveUser(@RequestBody List<User> userData){
         userRepo.saveAll(userData);
         return ResponseEntity.ok("Data saved");
@@ -32,17 +32,17 @@ public class UserController {
     }
 
 
-//    @PutMapping(value = "update/{id}")
-//    public String updateUser(@PathVariable long id, @RequestBody User user){
-//        User updatedUser = userRepo.findById(id).get();
-//        updatedUser.setEmail(user.getEmail());
-//        updatedUser.setPassword(user.getPassword());
-//        updatedUser.setName(user.getName());
-//        updatedUser.setAddress(user.getAddress());
-//        updatedUser.setCards(user.getCards());
-//        userRepo.save(updatedUser);
-//        return "Updated...";
-//    }
+    @PutMapping(value = "update/{id}")
+    public String updateUser(@PathVariable long id, @RequestBody User user){
+        User updatedUser = userRepo.findById(id).get();
+        //updatedUser.setEmail(user.getEmail());
+        updatedUser.setPassword(user.getPassword());
+        updatedUser.setName(user.getName());
+        updatedUser.setAddress(user.getAddress());
+        updatedUser.setCards(user.getCards());
+        userRepo.save(updatedUser);
+        return "Updated...";
+    }
 
 
     @PutMapping(value = "/update/account/{id}")
